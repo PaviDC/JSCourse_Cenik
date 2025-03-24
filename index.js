@@ -18,14 +18,15 @@ Vytvořte si repozitář ze šablony cviceni-cenik se stránkou, která nabízí
 
 function selectPlan(planNumber) {
     const plans = document.querySelectorAll (".plan"); 
+    //vybere vsechny plany
+    plans.forEach(plan => plan.classList.remove('plan--selected')); //odebere tridu plan--selected 
     
-    plans.forEach(plan => plan.classList.remove('plan--selected'));
-
-    if (planNumber >=1 && planNumber <= plans.length){
+    if (planNumber >=1 && planNumber <= plans.length){ //prida tridu jen k vybranemu planu
         document.getElementById(`plan${planNumber}`).classList.add("plan--selected");    
     }
 }
 
 document.querySelectorAll('.plan').forEach((plan, index) => {
-    plan.addEventListener('click', () => selectPlan(index + 1)); // `index + 1` odpovídá ID plánu
+    //pridani kliknuti
+    plan.addEventListener('click', () => selectPlan(index + 1));
 });
